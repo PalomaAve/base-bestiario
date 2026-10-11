@@ -83,7 +83,12 @@ function mostrarVictoria() {
 }
 
 function reproducirSonido() {
-  const sonido = new Audio("./assets/audio/bruja.mp3");
+  const sonido = new Audio("./assets/img/bruja.mp3");
+
+   sonido.play().catch((error) => {
+    console.error("No se pudo reproducir el audio:", error);
+
+}
 }
 
 // Generamos un nuevo collage cada vez que hacemos click en el botón "mezclar"
