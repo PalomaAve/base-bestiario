@@ -1,27 +1,27 @@
 // Listas de imágenes
 const listaCabezas = [
-  "../base-bestiario/assets/img/cabeza1.jpeg",
-  "../base-bestiario/assets/img/cabeza2.jpeg",
-  "../base-bestiario/assets/img/cabeza3.jpeg",
-  "../base-bestiario/assets/img/cabeza4.jpeg",
+  "./assets/img/cabeza1.jpeg",
+  "./assets/img/cabeza2.jpeg",
+  "./assets/img/cabeza3.jpeg",
+  "./assets/img/cabeza4.jpeg",
 ];
 const listaTroncos = [
-  "../base-bestiario/assets/img/tronco1.jpeg",
-  "../base-bestiario/assets/img/tronco2.jpeg",
-  "../base-bestiario/assets/img/tronco3.jpeg",
-  "../base-bestiario/assets/img/tronco4.jpeg",
+  "./assets/img/tronco1.jpeg",
+  "./assets/img/tronco2.jpeg",
+  "./assets/img/tronco3.jpeg",
+  "./assets/img/tronco4.jpeg",
 ];
 const listaPiernas = [
-  "../base-bestiario/assets/img/piernas1.jpeg",
-  "../base-bestiario/assets/img/piernas2.jpeg",
-  "../base-bestiario/assets/img/piernas3.jpeg",
-  "../base-bestiario/assets/img/piernas4.jpeg",
+  "./assets/img/piernas1.jpeg",
+  "./assets/img/piernas2.jpeg",
+  "./assets/img/piernas3.jpeg",
+  "./assets/img/piernas4.jpeg",
 ];
 const listaPatas = [
-  "../base-bestiario/assets/img/patas1.jpeg",
-  "../base-bestiario/assets/img/patas2.jpeg",
-  "../base-bestiario/assets/img/patas3.jpeg",
-  "../base-bestiario/assets/img/patas4.jpeg",
+  "./assets/img/patas1.jpeg",
+  "./assets/img/patas2.jpeg",
+  "./assets/img/patas3.jpeg",
+  "./assets/img/patas4.jpeg",
 ];
 
 // Obtenemos los contenedores de las imágenes del HTML usando los IDs
@@ -42,20 +42,48 @@ function numeroAleatorio(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+const mensaje = document.getElementById("mensajeVictoria");
+mensaje.style.display = "none";
+mensaje.textContent = "";
+
 // Función para crear una nueva bestia con tres imágenes elegidas aleatoriamente
 function generarBestia() {
-  cabezaAleatorio = numeroAleatorio(0, listaCabezas.length);
-  troncoAleatorio = numeroAleatorio(0, listaTroncos.length);
-  piernasAleatorio = numeroAleatorio(0, listaTroncos.length);
-  patasAleatorio = numeroAleatorio(0, listaPatas.length);
+  // Elegimos un índice aleatorio para cada parte
+  const indiceCabeza = Math.floor(Math.random() * listaCabezas.length);
+  const indiceTronco = Math.floor(Math.random() * listaTroncos.length);
+  const indicePiernas = Math.floor(Math.random() * listaPiernas.length);
+  const indicePatas = Math.floor(Math.random() * listaPatas.length);
 
-  // Asignamos la nueva fuente (source) a cada imagen
-  cabeza.src = `${listaCabezas[cabezaAleatorio]}`; //ruta + listaCabezas[cabezaAleatorio];
-  tronco.src = `${listaTroncos[troncoAleatorio]}`;
-  piernas.src = `${listaTroncos[piernasAleatorio]}`;
-  patas.src = `${listaPatas[patasAleatorio]}`;
+  // Mostramos las imágenes seleccionadas
+  cabeza.src = listaCabezas[indiceCabeza];
+  tronco.src = listaTroncos[indiceTronco];
+  piernas.src = listaPiernas[indicePiernas];
+  patas.src = listaPatas[indicePatas];
 
-  console.log(cabezaAleatorio, troncoAleatorio, piernasAleatorio, patasAleatorio);
+  // Comprobamos si las cuatro partes tienen el mismo índice
+  if (
+    indiceCabeza === indiceTronco &&
+    indiceTronco === indicePiernas &&
+    indicePiernas === indicePatas
+  ) {
+    mostrarVictoria();
+  }
+}
+
+
+function mostrarVictoria() {
+  const mensaje = document.getElementById("mensajeVictoria");
+
+  mensaje.textContent =
+    "🎃 ¡DISFRAZ COMPLETO! Encontraste el disfraz legendario 🎃";
+
+  mensaje.style.display = "block";
+
+  reproducirSonido();
+}
+
+function reproducirSonido() {
+  const sonido = new Audio("./assets/audio/bruja.mp3");
 }
 
 // Generamos un nuevo collage cada vez que hacemos click en el botón "mezclar"
