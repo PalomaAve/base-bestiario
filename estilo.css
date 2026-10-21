@@ -10,7 +10,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
+  background-image: url("./assets/img/halloween3.avif");
+  background-size: 2500px;
 }
 
 ::selection {
@@ -24,14 +25,15 @@ h2 {
 }
 
 a, a:active, a:visited, a:hover {
-  color: rgb(193, 90, 0);
+  color: rgb(193, 113, 0);
   cursor: pointer;
   text-decoration: none;
 }
 
 #contenedorGeneral {
-  margin: auto 1em;
+  margin: 5em;
   text-align: center;
+  
 }
 
 #tituloPagina {
@@ -39,20 +41,36 @@ a, a:active, a:visited, a:hover {
   margin-bottom: 0;
   margin-bottom: 0.5em;
   font-family: "Henny Penny", system-ui;
-  font-weight: 400;
+  font-size: 5em;
   font-style: normal;
+  animation-name: cambiofuente;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
 }
+@keyframes cambiofuente {
+  from {
+    font-style: normal;
+  }
+  to {
+    font-style: italic;
+  }
+}
+
 
 
 #tituloPagina:hover {
   color: rgb(230, 205, 181);
   cursor: pointer;
+
 }
 
 #contenedorPersonaje {
   display: flex;
   flex-direction: column;
   align-items: space-around;
+  margin: 2em auto;
+  border: #ca7e4b solid 14px;
+  width: fit-content;
 }
 
 .imagen {
@@ -62,7 +80,9 @@ a, a:active, a:visited, a:hover {
 }
 
 #boton {
-  font-size: 0.9em;
+  font-size: 1.5em;
+  font-family: "Henny Penny", system-ui;
+  font-style: normal;
   background-color:  rgb(208, 115, 9);
   color: rgb(0, 0, 0);
   cursor: pointer;
@@ -74,7 +94,7 @@ a, a:active, a:visited, a:hover {
   color: orange;
   font-family: "Henny Penny", system-ui;
   font-style: normal;
-  font-size: 1.5rem;
+  font-size: 3em;
   margin: 10px auto;
   text-align: center;
   animation: aparecer 0.5s ease-in-out;

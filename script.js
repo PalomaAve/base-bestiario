@@ -67,28 +67,25 @@ function generarBestia() {
     indicePiernas === indicePatas
   ) {
     mostrarVictoria();
+  } else {
+mensaje.style.display = "none";
   }
 }
 
 
 function mostrarVictoria() {
-  const mensaje = document.getElementById("mensajeVictoria");
-
   mensaje.textContent =
     "🎃 ¡DISFRAZ COMPLETO! Encontraste el disfraz legendario 🎃";
 
   mensaje.style.display = "block";
 
-  reproducirSonido();
-}
-
-function reproducirSonido() {
-  const sonido = new Audio("./assets/img/bruja.mp3");
+  const sonido = new Audio("./assets/img/musica/bruja.mp3");
+  sonido.load()
 
    sonido.play().catch((error) => {
-    console.error("No se pudo reproducir el audio:", error);
+    console.error("Error al reproducir la victoria:", error);
 
-}
+})
 }
 
 // Generamos un nuevo collage cada vez que hacemos click en el botón "mezclar"
